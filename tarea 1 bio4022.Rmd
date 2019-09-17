@@ -8,7 +8,7 @@ output:
 
 ---
 
-###Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
+####Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE , message = FALSE, warning = FALSE)
@@ -32,12 +32,15 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
 
 Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
 
-kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F) %>% kable_styling()
+kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F , digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", full_width = F))
+
+
 ```
+
 
 #### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
 
-```{r}
+```{r, fig.cap = "Representación de Peso en Kg de las especies del género Canis que se encuentran en la base de datos Pantheria"}
 
 ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point(alpha=0.5, color="Blue", size=4) + theme_light()
 
