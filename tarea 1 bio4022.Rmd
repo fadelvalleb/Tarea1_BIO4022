@@ -2,22 +2,24 @@
 title: "Tarea 1 - BIO4022"
 author: "Felipe Del Valle"
 date: "20 de Septiembre de 2019"
-output: html_document
+output: 
+   html_document:
+    fig_caption: yes
 ---
 
 ###Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE , message = FALSE, warning = FALSE)
-library(tidyverse)
-library(ggplot2)
 
 ```
 
 
-```{r echo = FALSE , message = FALSE, warning = FALSE}
+```{r}
 library(tidyverse)
 library(ggplot2)
+
+Pantheria_DB <- read.delim("~/Tarea1_BIO4022/Pantheria_DB.txt")
 
 Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binomial) %>%
   group_by(MSW05_Genus) %>% filter(MSW05_Genus == "Canis") %>% 
