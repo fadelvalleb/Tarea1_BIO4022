@@ -9,5 +9,8 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
   rename(Especie = MSW05_Binomial, Peso= X5.1_AdultBodyMass_g) %>% 
   mutate(Peso_en_Kg = Peso/1000)
 
+
+Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
+
 ggplot(Perros, aes(Especie,Peso_en_Kg)) + geom_point()
 

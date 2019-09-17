@@ -7,7 +7,7 @@ output:
     fig_caption: yes
 ---
 
-##Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
+###Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE , message = FALSE, warning = FALSE)
@@ -17,7 +17,8 @@ library(kableExtra)
 
 ```
 
-###Se hizo una exploración de la base de datos y tomando en cuenta la cantidad de especies, se filtró por género Canis ocupando . Este filtrado generó la siguiente tabla
+####Se hizo una exploración de la base de datos y tomando en cuenta la cantidad de especies, se filtró por género Canis ocupando . Este filtrado generó la siguiente tabla
+
 ```{r}
 
 Pantheria_DB <- read.delim("~/Tarea1_BIO4022/Pantheria_DB.txt")
@@ -26,11 +27,14 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
   group_by(MSW05_Genus) %>% filter(MSW05_Genus == "Canis") %>% 
   rename(Especie = MSW05_Binomial, Peso= X5.1_AdultBodyMass_g) %>% 
   mutate(Peso_en_Kg = Peso/1000)
-kable(Perros, caption="Tabla del filtrado", row.names = F)
+
+Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
+
+kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F)
 
 ```
 
-### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
+#### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
 
 ```{r}
 
@@ -42,7 +46,7 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
   rename(Especie = MSW05_Binomial, Peso= X5.1_AdultBodyMass_g) %>% 
   mutate(Peso_en_Kg = Peso/1000)
 
-ggplot(Perros, aes(Especie,Peso_en_Kg)) + geom_point()
+ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point()
 
 ```
 
