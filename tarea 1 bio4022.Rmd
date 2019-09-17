@@ -2,9 +2,10 @@
 title: "Tarea 1 - BIO4022"
 author: "Felipe Del Valle"
 date: "20 de Septiembre de 2019"
-output: 
+output:
   html_document:
     fig_caption: yes
+  pdf_document: default
 ---
 
 ###Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
@@ -49,5 +50,8 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
 ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point()
 
 ```
+
+####A partir de estos datos se puede afirmar que el promedio del peso de las especies del género Canis en este ejercicio es `r mean(Perros_Tidy$Peso_en_Kg)` Kg y su desviación estándar es de `r sd(Perros_Tidy$Peso_en_Kg)`Kg
+
 
 ---
