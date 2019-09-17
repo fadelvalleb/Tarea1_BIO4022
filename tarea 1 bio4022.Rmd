@@ -1,7 +1,7 @@
 ---
 title: "Tarea 1 - BIO4022"
 author: "Felipe Del Valle"
-date: "13 de septiembre de 2019"
+date: "20 de Septiembre de 2019"
 output: html_document
 ---
 
