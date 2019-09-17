@@ -32,7 +32,7 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
 
 Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
 
-kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F , digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", full_width = F))
+kable(Perros_Tidy, caption=" Tabla 1. Especies del género Canis y sus pesos correspondientes ", row.names = F , digits = 2) %>% kable_styling(bootstrap_options = c("striped", "hover", full_width = F))
 
 
 ```
@@ -40,7 +40,7 @@ kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondien
 
 #### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
 
-```{r, fig.cap = "Representación de Peso en Kg de las especies del género Canis que se encuentran en la base de datos Pantheria"}
+```{r, fig.cap = " Figura 1. Representación de Peso en Kg de las especies del género Canis que se encuentran en la base de datos Pantheria"}
 
 ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point(alpha=0.5, color="Blue", size=4) + theme_light()
 
