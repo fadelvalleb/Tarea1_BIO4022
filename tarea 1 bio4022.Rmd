@@ -5,7 +5,7 @@ date: "20 de Septiembre de 2019"
 output:
   html_document:
     fig_caption: yes
-  pdf_document: default
+
 ---
 
 ###Acá se presentará la versión en Rmarkdown de la tarea 1. En este caso se realizará un ejercicio con la base de datos Pantheria.
@@ -15,13 +15,14 @@ knitr::opts_chunk$set(echo = FALSE , message = FALSE, warning = FALSE)
 library(tidyverse)
 library(ggplot2)
 library(kableExtra)
+library(stargazer)
+library(knitr)
 
 ```
 
-####Se hizo una exploración de la base de datos y tomando en cuenta la cantidad de especies, se filtró por género Canis ocupando . Este filtrado generó la siguiente tabla
+####Se hizo una exploración de la base de datos y tomando en cuenta la cantidad de especies, se filtró por género Canis. Este filtrado generó la siguiente tabla de especies por género y sus pesos en Kg correspondientes.
 
 ```{r}
-
 Pantheria_DB <- read.delim("~/Tarea1_BIO4022/Pantheria_DB.txt")
 
 Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binomial) %>%
@@ -31,27 +32,18 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
 
 Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
 
-kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F)
-
+kable(Perros_Tidy, caption="Especies del género Canis y sus pesos correspondientes ", row.names = F) %>% kable_styling()
 ```
 
 #### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
 
 ```{r}
 
-
-Pantheria_DB <- read.delim("~/Tarea1_BIO4022/Pantheria_DB.txt")
-
-Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binomial) %>%
-  group_by(MSW05_Genus) %>% filter(MSW05_Genus == "Canis") %>% 
-  rename(Especie = MSW05_Binomial, Peso= X5.1_AdultBodyMass_g) %>% 
-  mutate(Peso_en_Kg = Peso/1000)
-
-ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point()
+ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point(alpha=0.5, color="Blue", size=4) + theme_light()
 
 ```
 
-####A partir de estos datos se puede afirmar que el promedio del peso de las especies del género Canis en este ejercicio es `r mean(Perros_Tidy$Peso_en_Kg)` Kg y su desviación estándar es de `r sd(Perros_Tidy$Peso_en_Kg)`Kg
+####A partir de estos datos se puede afirmar que el promedio del peso de las especies del género Canis en este ejercicio es `r mean(Perros_Tidy$Peso_en_Kg)` *Kg* y su desviación estándar es de `r sd(Perros_Tidy$Peso_en_Kg)` *Kg*
 
 
 ---
