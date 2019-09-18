@@ -41,7 +41,7 @@ kable(Perros_Tidy, caption=" Tabla 1. Especies del género Canis y sus pesos cor
 
 #### Posteriormente, se realizó un gráfico con la función ggplot de tal manera que se pudieran visualizar los datos de la tabla filtrada.
 
-```{r, fig.cap = " Figura 1. Representación de Peso en Kg de las especies del género Canis que se encuentran en la base de datos Pantheria"}
+```{r, fig.cap = " Figura 1. Representación de Peso en Kg de las especies del género Canis que se encuentran en la base de datos Pantheria", fig.align='center'}
 
 ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point(alpha=1, color="#32a89e", size=4) + theme_light() + ylab("Peso (Kg)" )
 
