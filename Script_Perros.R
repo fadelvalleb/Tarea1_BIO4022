@@ -16,5 +16,6 @@ Perros <- Pantheria_DB %>% select(MSW05_Genus, X5.1_AdultBodyMass_g, MSW05_Binom
 ### Versión Tidy de la tabla de Perros usando la función ungruop()
 Perros_Tidy <- Perros %>% ungroup() %>% select(Especie,Peso_en_Kg)
 
-ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + geom_point(alpha=0.5, color="Blue", size=4) + theme_light()
+ggplot(Perros_Tidy, aes(Especie,Peso_en_Kg)) + 
+  geom_point(alpha=0.5, color="Blue", size=4) + theme_grey() +ylab("Peso (Kg)")
 

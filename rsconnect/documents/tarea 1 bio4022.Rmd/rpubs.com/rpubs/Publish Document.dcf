@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/529375/4461eed841de4646b800372c840a6ab2
+bundleId: https://api.rpubs.com/api/v1/document/529375/4461eed841de4646b800372c840a6ab2
+url: http://rpubs.com/fadelvalle/529375
+when: 1568760501.64906
